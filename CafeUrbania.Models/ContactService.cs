@@ -11,8 +11,14 @@ public class ContactService : IContactService
         this.http = http;
     }
 
+    public async Task<List<Categories>> GetCategory()
+    {
+        var infos = await http.GetFromJsonAsync<List<Categories>>("v1/contact");
+        return infos;
+    }
+
     public async Task PostContact(Contact contact)
     {
-        await http.PostAsJsonAsync("contact", contact);
+        await http.PostAsJsonAsync("v1/contact", contact);
     }
 }

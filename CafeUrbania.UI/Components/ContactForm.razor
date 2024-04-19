@@ -11,30 +11,68 @@
     <div class="alert alert-success">Merci @Contact.Nom de avoir écrit! Nous vous répondons sous peu.</div>
 }
 <hr />
+@if (editContext != null)
+{
+    <EditForm EditContext="@editContext" method="post" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+        <div class="mb-3">
+            <label class="form-label" for="name">Prénom: </label>
+            <InputText id="Prenom" class="form-control" @bind-Value="@Contact.Prenom" placeholder="Entrez votre prénom"></InputText>
+            <ValidationMessage For="@(() => Contact.Prenom)" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="name">Nom: </label>
+            <InputText id="Nom" class="form-control" @bind-Value="@Contact.Nom" placeholder="Entrez votre nom"></InputText>
+            <ValidationMessage For="@(() => Contact.Nom)" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="name">Catégorie de demande: </label>
+            <InputSelect @bind-Value="@Contact.CategorieDemande" class="form-control">
+                <option value="">Veuillez sélectionner une catégorie </option>
+                @foreach (var item in Categories)
+                {
+                    <option value=@item.CategorieId>@item.CategorieDescription</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => Contact.CategorieDemande)" />
+        </div>
+        <div class="mb-3" style="background-color:lightgray;padding: 5px 0px 0px 10px">
+            <label class="form-label" for="choixNotification">Je souhaite être notifié : </label>
+            &nbsp;  &nbsp;  &nbsp;
+            <InputRadioGroup @bind-Value="@Contact.ChoixNotification" @bind-Value:after="@OnChangeChoixNotification">
+                <InputRadio id="NePasMeNotifier" Value=1 />
+                <label class="form-label" for="NePasMeNotifier">Ne pas me notifier</label>
+                &nbsp;  &nbsp;  &nbsp;
 
-<EditForm Model="@Contact" method="post" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
-    <div class="mb-3">
-        <label class="form-label" for="name">Nom: </label>
-        <InputText id="Nom" class="form-control" @bind-Value="@Contact.Nom" placeholder="Entrez votre nom"></InputText>
-        <ValidationMessage For="@(() => Contact.Nom)" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Adresse électronique: </label>
-        <InputText id="Courriel" class="form-control" @bind-Value="@Contact.Courriel" placeholder="Entrez votre courriel dans un format valide"></InputText>
-        <ValidationMessage For="@(() => Contact.Courriel)" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Téléphone: </label>
-        <InputText id="Telephone" class="form-control" @bind-Value="@Contact.Telephone" placeholder="Entrez votre téléphone selon le format 9999999999"></InputText>
-        <ValidationMessage For="@(() => Contact.Telephone)" />
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="message">Message: </label>
-        <InputTextArea id="message" class="form-control" @bind-Value="@Contact.Message" placeholder="Entrez votre message"></InputTextArea>
-        <ValidationMessage For="@(() => Contact.Message)" />
-    </div>
-    <button type="submit" class="btn btn-info float-end">Envoyer</button>
-</EditForm>
+                <InputRadio id="Courriel"  Value=2 />
+                <label class="form-label" for="Courriel">Courriel</label>
+                &nbsp; &nbsp;  &nbsp;
 
+                <InputRadio id="MessageTexte" Value=3 />
+                <label class="form-label" for="MessageTexte">Message texte</label>
+            </InputRadioGroup>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Adresse électronique: </label>
+            <InputText disabled="@courrielDisabled" id="Courriel" class="form-control" @bind-Value="@Contact.Courriel" placeholder="Entrez votre courriel dans un format valide"></InputText>
+            <ValidationMessage For="@(() => Contact.Courriel)" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Confirmation adresse électronique: </label>
+            <InputText disabled="@courrielDisabled" id="Courriel" class="form-control" @bind-Value="@Contact.CourrielConfirmation" placeholder="Entrez à nouveau votre courriel"></InputText>
+            <ValidationMessage For="@(() => Contact.CourrielConfirmation)" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Téléphone: </label>
+            <InputText disabled="@telephoneDisabled" id="Telephone" class="form-control" @bind-Value="@Contact.Telephone" placeholder="Entrez votre téléphone selon le format 9999999999"></InputText>
+            <ValidationMessage For="@(() => Contact.Telephone)" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="message">Message: </label>
+            <InputTextArea id="message" class="form-control" @bind-Value="@Contact.Message" placeholder="Entrez votre message"></InputTextArea>
+            <ValidationMessage For="@(() => Contact.Message)" />
+        </div>
+        <button type="submit" class="btn btn-info float-end">Envoyer</button>
+    </EditForm>
+}

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CafeUrbania.Models", "CafeU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CafeUrbania.UI", "CafeUrbania.UI\CafeUrbania.UI.csproj", "{632FBC8B-E19A-4880-AF6C-AAFA4F7F6CA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeUrbania.MinApi", "CafeUrbania.MinApi\CafeUrbania.MinApi.csproj", "{6EFCD5A9-3A84-4EB6-9590-2A6D08CBD8AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CafeUrbania.MinApi", "CafeUrbania.MinApi\CafeUrbania.MinApi.csproj", "{6EFCD5A9-3A84-4EB6-9590-2A6D08CBD8AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaféUrbania.Test", "CaféUrbania.Test\CaféUrbania.Test.csproj", "{EEBEB48C-2540-4F94-A8AB-F57656C03DB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6EFCD5A9-3A84-4EB6-9590-2A6D08CBD8AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EFCD5A9-3A84-4EB6-9590-2A6D08CBD8AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EFCD5A9-3A84-4EB6-9590-2A6D08CBD8AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBEB48C-2540-4F94-A8AB-F57656C03DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBEB48C-2540-4F94-A8AB-F57656C03DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBEB48C-2540-4F94-A8AB-F57656C03DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBEB48C-2540-4F94-A8AB-F57656C03DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

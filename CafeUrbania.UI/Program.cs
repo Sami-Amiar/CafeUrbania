@@ -16,7 +16,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IMenuService, MenuService>(client =>
     client.BaseAddress = new Uri("https://localhost:7110/"));
 builder.Services.AddHttpClient<IContactService, ContactService>(client =>
-    client.BaseAddress = new Uri("https://localhost:7110/"));
+    client.BaseAddress = new Uri("https://localhost:7085/"));
 builder.Services.AddHttpClient<IOrderService, OrderService>(client =>
     client.BaseAddress = new Uri("https://localhost:7110/"));
 
